@@ -14,4 +14,8 @@ impl Point {
     pub fn subtract(&self, point: &Point) -> Vector3<f64> {
         Vector3{x: self.x - point.x, y: self.y - point.y, z: self.z - point.z}
     }
+
+    pub fn add(&self, point: &Point) -> Vector3<f64> {
+        Vector3{x: self.x + point.x, y: self.y + point.y, z: self.z + point.z}
+    }
 }

@@ -3,11 +3,38 @@ use cgmath::{InnerSpace, Vector3};
 use crate::{color, ray};
 use crate::geometry::point;
 use crate::geometry::traits::Intersectable;
+use crate::geometry::element::Element;
+use crate::color::Color;
+use crate::geometry::point::Point;
 
 pub struct Sphere {
     pub center: point::Point,
     pub radius: f64,
     pub color: color::Color
+}
+
+struct Position {
+    x: f64,
+    y: f64,
+    z: f64
+}
+
+impl Sphere {
+    pub fn new(color: Color, radius: f64, x: f64, y: f64, z: f64) -> Element {
+        Element::Sphere(Sphere{
+            center: Point {
+                x,
+                y,
+                z
+            },
+            radius,
+            color
+        })
+    }
+
+    pub fn surface_normal(&self, hit_point: &Point) -> Vector3<f64> {
+        hit_point.subtract(&self.center).normalize()
+    }
 }
 
 impl Intersectable for Sphere {

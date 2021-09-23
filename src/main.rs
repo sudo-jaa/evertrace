@@ -10,6 +10,8 @@ mod ray;
 mod scene;
 mod geometry;
 
+//test!
+
 pub fn render(scene: &scene::Scene) -> DynamicImage {
     let mut image = DynamicImage::new_rgb8(scene.width, scene.height);
     let black = Rgba::from_channels(0, 0, 0, 0);
@@ -59,8 +61,8 @@ fn test_can_render_scene() {
 fn main() {
     println!("raytrace!");
     let scene = scene::Scene {
-        width: 800,
-        height: 600,
+        width: 1300,
+        height: 1200,
         fov: 90.0,
         spheres: vec![Sphere {
             center: Point {
